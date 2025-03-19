@@ -4,6 +4,8 @@ const cors = require("cors");
 const sequelize = require("./config/database");
 const routes = require("./routes/index");
 const models = require("./models/index");
+const swaggerUi = require("swagger-ui-express");
+const swaggerSpecs = require("./config/swagger");
 
 const { UserModel, EducationModel, ContactModel, CategoryModel, AddressModel } =
   models;
@@ -14,6 +16,9 @@ app.use(cors());
 app.use(bodyParser.json());
 
 app.use("/api", routes);
+app.use("/api-docs", swaggerUi.serve, swaggerUi.setup(swaggerSpecs));
+
+console.log("Swagger disponível em http://localhost:3000/api-docs");
 
 sequelize
   .authenticate()
