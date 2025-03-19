@@ -1,4 +1,4 @@
-const userRepository = require("../services/userService");
+const userRepository = require("../repositories/userRepository");
 
 class UserService {
   async createUser(userData) {
@@ -31,6 +31,10 @@ class UserService {
       throw new Error("Usuário não encontrado");
     }
     return userRepository.delete(id);
+  }
+
+  async getAllUser() {
+    return await userRepository.findAll();
   }
 }
 

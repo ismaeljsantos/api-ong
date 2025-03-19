@@ -3,12 +3,12 @@ const bodyParser = require("body-parser");
 const cors = require("cors");
 const sequelize = require("./config/database");
 const routes = require("./routes/index");
-const models = require("./models/index");
+// const models = require("./models/index");
 const swaggerUi = require("swagger-ui-express");
 const swaggerSpecs = require("./config/swagger");
 
-const { UserModel, EducationModel, ContactModel, CategoryModel, AddressModel } =
-  models;
+// const { UserModel, EducationModel, ContactModel, CategoryModel, AddressModel } =
+//   models;
 
 const app = express();
 

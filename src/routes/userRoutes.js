@@ -132,4 +132,24 @@ router.put("/:id", userController.updateUser);
  */
 router.delete("/:id", userController.deleteUser);
 
+/**
+ * @swagger
+ * /users:
+ *   get:
+ *     summary: Busca todos os usuários cadastrados
+ *     tags: [User]
+ *     responses:
+ *       200:
+ *         description: Lista de todos os usuários cadastrados
+ *         content:
+ *           application/json:
+ *             schema:
+ *               type: array
+ *               items:
+ *                 $ref: '#/components/schemas/User'
+ *       500:
+ *         description: Erro interno do servidor
+ */
+router.get("/", userController.getAllUser);
+
 module.exports = router;

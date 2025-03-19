@@ -28,10 +28,10 @@ const UserModel = sequelize.define(
     },
     cpfIv: {
       type: DataTypes.STRING,
-      allowNull: false,
-      validate: {
-        notNull: { msg: "O campo cpfIv não pode ser nulo" },
-      },
+      // allowNull: true,
+      // validate: {
+      //   notNull: { msg: "O campo cpfIv não pode ser nulo" },
+      // },
     },
     email: {
       type: DataTypes.STRING,

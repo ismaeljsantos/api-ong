@@ -10,6 +10,14 @@ class UserController {
       return res.status(400).json({ error: error.message });
     }
   }
+  async getAllUser(req, res) {
+    try {
+      const users = await userService.getAllUser();
+      return res.status(200).json(users);
+    } catch (error) {
+      return res.status(400).json({ error: error.message });
+    }
+  }
 
   async getUserById(req, res) {
     try {
