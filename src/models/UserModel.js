@@ -22,9 +22,16 @@ const UserModel = sequelize.define(
       allowNull: false,
     },
     cpf: {
-      type: DataTypes.STRING(11),
+      type: DataTypes.STRING,
       allowNull: false,
       unique: true,
+    },
+    cpfHash: {
+      type: DataTypes.STRING(128),
+      allowNull: false,
+      validate: {
+        notNull: { msg: "CPF Hash is required" },
+      },
     },
     cpfIv: {
       type: DataTypes.STRING,

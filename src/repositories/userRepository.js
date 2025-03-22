@@ -6,7 +6,7 @@ class UserRepository {
   }
 
   async findById(id) {
-    return await User.findById(id);
+    return await User.findByPk(id);
   }
 
   async findByEmail(email) {
@@ -22,6 +22,10 @@ class UserRepository {
 
   async delete(id) {
     return await User.destroy({ where: { id } });
+  }
+
+  async findByCpfHash(cpfHash) {
+    return await User.findOne({ where: { cpfHash } });
   }
 }
 
