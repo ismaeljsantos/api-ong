@@ -1,7 +1,7 @@
 const addressRepository = require("../repositories/addressRepository");
 
 class AddressService {
-  async createAddress(addressData) {
+  async create(addressData) {
     const { userId, logradouro, numero, complemento, bairro, cidade, uf, cep } =
       addressData;
 
@@ -27,7 +27,7 @@ class AddressService {
     return address;
   }
   async getAddressByUserId(userId) {
-    const addresses = await addressRepository.findById(userId);
+    const addresses = await addressRepository.findByUserId(userId);
     if (!addresses || addresses.length === 0) {
       throw new Error("Nenhum endereço encontrado para este usuário.");
     }

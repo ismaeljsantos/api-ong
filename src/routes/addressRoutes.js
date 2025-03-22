@@ -38,7 +38,7 @@ const router = express.Router();
  *         cidade:
  *           type: string
  *           description: Nome da cidade
- *         estado:
+ *         uf:
  *           type: string
  *           description: Sigla do estado UF
  *         cep:

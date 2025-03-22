@@ -1,7 +1,7 @@
 const { Address } = require("../models");
 
 class AddressRepository {
-  async createAddress(addressData) {
+  async create(addressData) {
     return await Address.create(addressData);
   }
   async findById(id) {
