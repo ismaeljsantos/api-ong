@@ -51,7 +51,11 @@ class UserService {
     if (!user) {
       throw new Error("Nenhum usuário encontrado com o ID fornecido.");
     }
-    return userRepository.update(id, userData);
+    const [rowsUpdated] = await userRepository.update(id, userData);
+    if (rowsUpdated === 0) {
+      throw new Error("Nenhum usuário encontrado com o ID fornecido.");
+    }
+    return { message: "qUsuário atualizado com sucesso!" };
   }
 
   async deleteUser(id) {
