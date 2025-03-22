@@ -16,7 +16,7 @@ const CategoryModal = sequelize.define(
     },
   },
   {
-    tableName: "categories",
+    tableName: "categoriesUsers",
     timestamps: true,
   }
 );
