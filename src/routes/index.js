@@ -1,14 +1,16 @@
 const express = require("express");
-const userRoutes = require("./userRoutes");
-const addressRoutes = require("./addressRoutes");
-const loginRoutes = require("./loginRoutes");
-const categoryRoutes = require("./categoryRoutes");
+const userRoutes = require("./user");
+const postRoutes = require("./blog");
 
 const router = express.Router();
 
-router.use("/users", userRoutes);
-router.use("/addresses", addressRoutes);
-router.use("/login", loginRoutes);
-router.use("/categories", categoryRoutes);
+// Rotas de Usuário
+router.use("/users", userRoutes.userRoutes);
+router.use("/addresses", userRoutes.addressRoutes);
+router.use("/login", userRoutes.loginRoutes);
+router.use("/categories", userRoutes.categoryRoutes);
+
+// Rotas de Post
+router.use("/posts", postRoutes.postRoutes);
 
 module.exports = router;
