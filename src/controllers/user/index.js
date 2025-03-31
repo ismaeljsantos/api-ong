@@ -1,7 +1,7 @@
 const UserController = require("./userController");
 const AddressController = require("./addressController");
 const LoginController = require("./loginController");
-const CategoryController = require("./categoryController");
+const CategoryController = require("./CategoryController");
 
 module.exports = {
   UserController,

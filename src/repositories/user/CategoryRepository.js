@@ -1,29 +1,45 @@
-const Category = require("../../models/user/CategoryModel");
+const CategoryModel = require("../../models/user/CategoryModel");
 
 class CategoryRepository {
   async create(data) {
-    return await Category.create(data);
+    return await CategoryModel.create(data);
   }
 
-  async findAll() {
-    return await Category.findAll();
+  async findAll({ limit = 10, offset = 0 }) {
+    return await CategoryModel.findAll({
+      limit,
+      offset,
+      attributes: ["id", "nome", "descricao"],
+    });
   }
 
   async findById(id) {
-    return await Category.findByPk(id);
+    return await CategoryModel.findByPk(id, {
+      attributes: ["id", "nome", "descricao"],
+    });
   }
 
+  async findOrCreate(data) {
+    return await CategoryModel.findOrCreate({
+      where: { nome: data.nome },
+      defaults: { descricao: data.descricao },
+    });
+  }
   async findByName(nome) {
-    return await Category.findOne({ where: { nome } });
+    return await CategoryModel.findOne({ where: { nome } });
   }
 
   async update(id, data) {
-    const [updatedRows] = await Category.update(data, { where: { id } });
+    const category = await CategoryModel.findByPk(id);
+    if (!category) {
+      throw new Error("Categoria não encontrada.");
+    }
+    const [updatedRows] = await CategoryModel.update(data, { where: { id } });
     return updatedRows; // Retorna apenas o número de registros atualizados
   }
 
   async delete(id) {
-    return await Category.destroy({ where: { id } });
+    return await CategoryModel.destroy({ where: { id } });
   }
 }
 

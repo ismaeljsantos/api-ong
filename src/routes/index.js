@@ -12,5 +12,6 @@ router.use("/categories", userRoutes.categoryRoutes);
 
 // Rotas de Post
 router.use("/posts", postRoutes.postRoutes);
+router.use("/tags", postRoutes.tagRoutes);
 
 module.exports = router;

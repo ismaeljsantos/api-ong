@@ -1,13 +1,15 @@
+// src/models/blog/index.js
 const Post = require("./PostModel");
+const Tag = require("./TagModel");
 const CategoryBlog = require("./CategoryBlogModel");
 const User = require("../user/UserModel");
-const Tag = require("./TagModel");
 
+// Relacionamentos
 User.hasMany(Post, { foreignKey: "autorId", onDelete: "CASCADE" });
 Post.belongsTo(User, { foreignKey: "autorId" });
 
 Post.belongsToMany(CategoryBlog, {
-  through: "PostCategoryBlogs",
+  through: "PostCategoryBlogs", // Tabela intermediária
   foreignKey: "postId",
   otherKey: "categoryBlogId",
 });
@@ -18,7 +20,7 @@ CategoryBlog.belongsToMany(Post, {
 });
 
 Post.belongsToMany(Tag, {
-  through: "PostTags",
+  through: "PostTags", // Tabela intermediária
   foreignKey: "postId",
   otherKey: "tagId",
 });
@@ -28,8 +30,4 @@ Tag.belongsToMany(Post, {
   otherKey: "postId",
 });
 
-module.exports = {
-  Post,
-  CategoryBlog,
-  Tag,
-};
+module.exports = { Post, Tag, User, CategoryBlog };

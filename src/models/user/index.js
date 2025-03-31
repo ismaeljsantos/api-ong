@@ -1,3 +1,4 @@
+// src/models/user/index.js
 const sequelize = require("../../config/database");
 const User = require("./UserModel");
 const Contact = require("./ContactModel");
@@ -34,7 +35,7 @@ Category.belongsToMany(User, {
   otherKey: "userId",
 });
 
-User.hasMany(Experience, { foreignkey: "userId", onDelete: "CASCADE" });
+User.hasMany(Experience, { foreignKey: "userId", onDelete: "CASCADE" });
 Experience.belongsTo(User, { foreignKey: "userId" });
 
 module.exports = {

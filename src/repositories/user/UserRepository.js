@@ -1,31 +1,43 @@
-const { User } = require("../../models");
+const { UserModel } = require("../../models/user/UserModel");
+const { CategoryModel } = require("../../models/user/CategoryModel");
 
 class UserRepository {
   async create(userData) {
-    return await User.create(userData);
+    return await UserModel.create(userData);
   }
 
   async findById(id) {
-    return await User.findByPk(id);
+    return await UserModel.findByPk(id);
   }
 
   async findByEmail(email) {
-    return await User.findOne({ where: { email } });
+    return await UserModel.findOne({ where: { email } });
+  }
+
+  async findByWithCategories(id) {
+    return await UserModel.findByPk(id, {
+      include: [
+        {
+          model: CategoryModel,
+          through: { attributes: [] },
+        },
+      ],
+    });
   }
   async findAll() {
-    return await User.findAll();
+    return await UserModel.findAll();
   }
 
   async update(id, userData) {
-    return await User.update(userData, { where: { id } });
+    return await UserModel.update(userData, { where: { id } });
   }
 
   async delete(id) {
-    return await User.destroy({ where: { id } });
+    return await UserModel.destroy({ where: { id } });
   }
 
   async findByCpfHash(cpfHash) {
-    return await User.findOne({ where: { cpfHash } });
+    return await UserModel.findOne({ where: { cpfHash } });
   }
 }
 

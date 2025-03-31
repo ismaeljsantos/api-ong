@@ -12,7 +12,16 @@ class CategoryService {
     // Cria a categoria
     return await categoryRepository.create(data);
   }
-
+  async findOrCreateCategory(nome) {
+    if (typeof nome !== "string" || !nome.trim()) {
+      throw new Error("O nome da categoria deve ser uma string válida!");
+    }
+    const [category] = await categoryRepository.findOrCreate({
+      nome: nome.trim().toUpperCase(),
+      descricao: "Usuário com acesso padrão limitado.",
+    });
+    return category;
+  }
   async getAll() {
     return await categoryRepository.findAll();
   }

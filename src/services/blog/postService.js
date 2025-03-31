@@ -1,7 +1,7 @@
 const PostRepository = require("../../repositories/blog/PostRepository");
 
 class PostService {
-  async create(post) {
+  async createPost(post) {
     if (!post.titulo || !post.conteudo || !post.autorId) {
       throw new Error(
         "Os campos 'titulo', 'conteudo' e 'autorId' são obrigatórios."

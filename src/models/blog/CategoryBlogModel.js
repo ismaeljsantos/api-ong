@@ -15,7 +15,7 @@ const CategoryBlogModel = sequelize.define(
     },
   },
   {
-    tableName: "blog_categories",
+    tableName: "blogCategories",
     timestamps: true,
   }
 );
