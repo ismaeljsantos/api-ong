@@ -1,5 +1,5 @@
-const { UserModel } = require("../../models/user/UserModel");
-const { CategoryModel } = require("../../models/user/CategoryModel");
+const UserModel = require("../../models/user/UserModel");
+const CategoryModel = require("../../models/user/CategoryModel");
 
 class UserRepository {
   async create(userData) {

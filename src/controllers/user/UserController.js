@@ -1,12 +1,15 @@
 const userService = require("../../services/user/userService");
+const logger = require("../../utils/logger");
 
 class UserController {
   async createUser(req, res) {
     try {
       const userData = req.body;
       const user = await userService.createUser(userData);
+      logger.info(`Usuário Criado: ID=${user.id}`);
       return res.status(201).json(user);
     } catch (error) {
+      logger.error(`Erro ao criar usuário: ${error.message}`);
       return res.status(400).json({ error: error.message });
     }
   }
